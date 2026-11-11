@@ -1,81 +1,85 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-     <meta charset="UTF-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>FIA'O</title>  
-     <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FIA'O | Home</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <header>
-       <div class="top">
-           <nav>
-            <div class="logo">FIAO'<span class="accent"></span><span class="ring"></span></div>
-    <ul class="menu">
-      <li><a href="#">Home</a></li>
-        <li><a href="credit.html">Credit</a></li>
+  <!-- ============ HEADER ============ -->
+  <header class="site-header">
+    <nav class="navbar">
+      <a href="index.html" class="logo">FIA'<span class="ring"></span></a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="credict.html">Credit</a></li>
         <li><a href="#">Products</a></li>
         <li><a href="#">Clients</a></li>
         <li><a href="#">Reports</a></li>
         <li><a href="#">Contact</a></li>
       </ul>
     </nav>
-  </div>
+  </header>
 
- <section class="hero">
-    <div class="hero-text">
-      <h1>Your <span class="gold">credit</span><br>notebook,<br>now digital.</h1>
-      <p>FIA'O digitizes customer, debt, and payment management for convenience stores and small businesses in Panama, replacing the traditional paper ledger with a modern digital management system.</p>
-      <div class="actions">
-        <a href="#" class="btn login">Login</a>
-        <a href="#" class="btn signup">Sign up</a>
+  <!-- ============ HERO ============ -->
+  <main class="hero">
+    <section class="hero-text">
+      <h1>Your <span>credit</span> notebook, now digital.</h1>
+      <p>
+        FIA'O digitizes customer, debt, and payment management for convenience
+        stores and small businesses in Panama, replacing the traditional paper
+        ledger with a modern digital management system.
+      </p>
+      <div class="hero-actions">
+        <a href="#" class="btn">Login</a>
+        <a href="#" class="btn">Sign up</a>
       </div>
-    </div>
+    </section>
 
-    <!-- PHONE MOCKUP -->
-    <div class="phone">
-      <div class="screen">
-        <div class="screen-head">
-          <div class="logo">FIA<span class="accent">´</span><span class="ring"></span></div>
-          <svg class="bell" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/>
-            <path d="M13.7 21a2 2 0 0 1-3.4 0"/>
-          </svg>
-          <div class="greeting">Good morning, John 👋</div>
-          <div class="amount">$1,240,50</div>
-          <div class="caption">Total balance to collect</div>
+    <section class="hero-phone" aria-label="App preview">
+      <div class="phone">
+        <div class="phone-screen">
+          <div class="phone-top">
+            <div class="row">
+              <span class="phone-logo">FIA' <i></i></span>
+              <span>🔔</span>
+            </div>
+            <p class="greeting">Good morning, John 👋</p>
+            <p class="balance">$1,240.50</p>
+            <p class="label">Total balance to collect</p>
+          </div>
+
+          <ul class="debtor-list">
+            <li class="debtor">
+              <span class="avatar">J</span>
+              <span class="info">John Perez<small>Owes</small></span>
+              <span class="amount">$45.00</span>
+            </li>
+            <li class="debtor">
+              <span class="avatar">A</span>
+              <span class="info">Ana Torres<small>Owes</small></span>
+              <span class="amount">$120.00</span>
+            </li>
+            <li class="debtor">
+              <span class="avatar green">P</span>
+              <span class="info">Pedro Ruiz<small>Owes</small></span>
+              <span class="amount dark">$32.50</span>
+            </li>
+            <li class="debtor">
+              <span class="avatar green">P</span>
+              <span class="info">Pedro Ruiz<small>Owes</small></span>
+              <span class="amount dark">$32.50</span>
+            </li>
+          </ul>
         </div>
-
-        <ul class="list">
-          <li class="row">
-            <div class="avatar pink">J</div>
-            <div class="who"><strong>Jonn Perez</strong><span>Owes</span></div>
-            <div class="money red">$45.00</div>
-          </li>
-          <li class="row">
-            <div class="avatar pink">A</div>
-            <div class="who"><strong>Ana Torres</strong><span>Owes</span></div>
-            <div class="money red">$120.00</div>
-          </li>
-          <li class="row">
-            <div class="avatar green">P</div>
-            <div class="who"><strong>Pedro Buiz</strong><span>Owes</span></div>
-            <div class="money green">$32.50</div>
-          </li>
-          <li class="row">
-            <div class="avatar green">P</div>
-            <div class="who"><strong>Pedro Puiz</strong><span>Owes</span></div>
-            <div class="money green">$32.50</div>
-          </li>
-        </ul>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
 </body>
 </html>
-
-      
