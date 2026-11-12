@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Clientes | Web Fia’o</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Gotham → Montserrat | Garet → Figtree | DM Sans → DM Sans -->
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Figtree:wght@400;500;600&family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet">
+<style>
+/* ===========================================================
+   BRANDING FIA’O
+   Colores: #B91C1C · #FFBF32 · #FEF3C7 · #482D1F
+   Título: Gotham · Subtítulo: DM Sans · Cuerpo: Garet
+   =========================================================== */
+:root {
+  --rojo:    #B91C1C;
+  --amarillo:#FFBF32;
+  --crema:   #FEF3C7;
+  --cafe:    #482D1F;
+  --blanco:  #FFFDF7;
+
+  --font-titulo:    'Gotham', 'Montserrat', sans-serif;
+  --font-subtitulo: 'DM Sans', sans-serif;
+  --font-cuerpo:    'Garet', 'Figtree', sans-serif;
+
+  --radius: 14px;
+  --shadow: 0 6px 20px rgba(72,45,31,.15);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-cuerpo); color: var(--cafe); background: var(--crema); line-height: 1.6; }
+h1, h2 { font-family: var(--font-titulo); font-weight: 800; line-height: 1.15; }
+h3 { font-family: var(--font-subtitulo); font-weight: 700; line-height: 1.25; }
+a { color: inherit; text-decoration: none; }
+.container { width: min(1120px, 92%); margin: 0 auto; }
+
+/* ---------- Logo ---------- */
+.logo-box { display: inline-block; background: var(--rojo); border-radius: 8px; padding: 6px 16px; font-family: var(--font-titulo); font-weight: 900; font-size: 1.7rem; letter-spacing: 1px; color: var(--blanco); line-height: 1.2; }
+.logo-box b { color: var(--amarillo); font-weight: 900; }
+
+/* ---------- Header ---------- */
+header { background: var(--blanco); box-shadow: 0 2px 10px rgba(72,45,31,.12); position: sticky; top: 0; z-index: 50; }
+.nav { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; flex-wrap: wrap; gap: 10px; }
+nav ul { display: flex; list-style: none; gap: 6px; flex-wrap: wrap; }
+nav a { padding: 8px 16px; border-radius: 999px; font-family: var(--font-subtitulo); font-weight: 500; font-size: .95rem; transition: .2s; }
+nav a:hover { background: var(--crema); color: var(--rojo); }
+nav a.active { background: var(--rojo); color: var(--blanco); }
+
+/* ---------- Hero ---------- */
+.hero { background: var(--amarillo); padding: 70px 0; }
+.hero-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 40px; align-items: center; }
+.hero h1 { font-size: clamp(2.2rem, 5.5vw, 3.6rem); color: var(--rojo); margin-bottom: 10px; text-transform: uppercase; }
+.hero p { font-size: 1.1rem; margin-bottom: 26px; max-width: 520px; }
+.btn { display: inline-block; padding: 13px 30px; border-radius: 999px; font-family: var(--font-subtitulo); font-weight: 700; border: 2px solid transparent; cursor: pointer; transition: .2s; font-size: 1rem; }
+.btn-primary { background: var(--rojo); color: var(--blanco); }
+.btn-primary:hover { background: var(--cafe); transform: translateY(-2px); box-shadow: var(--shadow); }
+
+.mini-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.mini { background: var(--blanco); border-radius: var(--radius); padding: 20px; box-shadow: var(--shadow); border-top: 6px solid var(--rojo); text-align: center; }
+.mini strong { display: block; font-family: var(--font-titulo); font-weight: 800; font-size: 2rem; color: var(--cafe); }
+.mini span { font-family: var(--font-subtitulo); font-size: .9rem; }
+
+/* ---------- Secciones ---------- */
+section { padding: 70px 0; }
+.section-title { text-align: center; margin-bottom: 36px; }
+.section-title h2 { font-size: clamp(1.7rem, 3.5vw, 2.4rem); color: var(--rojo); }
+.section-title p { margin-top: 8px; font-family: var(--font-subtitulo); opacity: .8; }
+.section-title h2::after { content: ""; display: block; width: 70px; height: 5px; background: var(--amarillo); border-radius: 4px; margin: 12px auto 0; }
+
+/* ---------- Buscador y filtros ---------- */
+.toolbar { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 30px; align-items: center; }
+.search { flex: 1; min-width: 240px; }
+input, select, textarea { width: 100%; padding: 12px 16px; border: 2px solid #ead9a8; border-radius: 999px; font-family: var(--font-cuerpo); font-size: 1rem; background: var(--blanco); color: var(--cafe); }
+textarea { border-radius: 10px; }
+.form-box input, .form-box select { border-radius: 10px; background: var(--crema); }
+input:focus, select:focus, textarea:focus { outline: none; border-color: var(--rojo); }
+.filters { display: flex; gap: 8px; flex-wrap: wrap; }
+.chip { padding: 9px 18px; border-radius: 999px; border: 2px solid var(--cafe); background: transparent; color: var(--cafe); font-family: var(--font-subtitulo); font-weight: 700; font-size: .9rem; cursor: pointer; transition: .2s; }
+.chip:hover { background: var(--cafe); color: var(--amarillo); }
+.chip.active { background: var(--rojo); border-color: var(--rojo); color: var(--blanco); }
+
+/* ---------- Tarjetas de clientes ---------- */
+.clients { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 24px; }
+.client { background: var(--blanco); border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow); transition: .2s; border-top: 6px solid var(--amarillo); }
+.client:hover { transform: translateY(-4px); }
+.client.late { border-top-color: var(--rojo); }
+.client.paid { border-top-color: var(--cafe); }
+.client-head { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
+.avatar { width: 52px; height: 52px; border-radius: 50%; background: var(--rojo); color: var(--amarillo); display: grid; place-items: center; font-family: var(--font-titulo); font-weight: 800; font-size: 1.1rem; flex-shrink: 0; }
+.client h3 { font-size: 1.1rem; }
+.client small { opacity: .75; }
+.debt { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-top: 1px dashed #ead9a8; }
+.debt strong { font-family: var(--font-titulo); font-weight: 800; font-size: 1.4rem; }
+.badge { padding: 4px 14px; border-radius: 999px; font-family: var(--font-subtitulo); font-size: .8rem; font-weight: 700; }
+.badge.ok   { background: var(--cafe); color: var(--crema); }
+.badge.wait { background: var(--amarillo); color: var(--cafe); }
+.badge.late { background: var(--rojo); color: var(--blanco); }
+.client-actions { display: flex; gap: 8px; margin-top: 8px; }
+.client-actions a { flex: 1; text-align: center; padding: 8px; border-radius: 10px; background: var(--crema); font-family: var(--font-subtitulo); font-weight: 700; font-size: .85rem; transition: .2s; }
+.client-actions a:hover { background: var(--rojo); color: var(--blanco); }
+.empty { text-align: center; padding: 40px; font-family: var(--font-subtitulo); display: none; }
+
+/* ---------- Formulario ---------- */
+#nuevo { background: var(--amarillo); }
+.form-box { background: var(--blanco); border-radius: var(--radius); box-shadow: var(--shadow); padding: 36px; max-width: 760px; margin: 0 auto; }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.form-grid .full { grid-column: 1 / -1; }
+label { display: block; font-family: var(--font-subtitulo); font-weight: 700; font-size: .9rem; margin-bottom: 6px; }
+.form-box .btn { width: 100%; margin-top: 8px; background: var(--rojo); color: var(--blanco); }
+.form-box .btn:hover { background: var(--cafe); }
+#nuevo .section-title h2::after { background: var(--rojo); }
+
+/* ---------- Footer ---------- */
+footer { background: var(--cafe); color: var(--crema); padding: 40px 0 24px; }
+.foot { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+.tagline { font-family: var(--font-subtitulo); font-size: .95rem; margin-top: 8px; color: var(--amarillo); }
+footer ul { list-style: none; display: flex; gap: 18px; flex-wrap: wrap; font-family: var(--font-subtitulo); }
+footer a:hover { color: var(--amarillo); }
+.copy { text-align: center; margin-top: 24px; font-size: .85rem; opacity: .7; }
+
+@media (max-width: 800px) {
+  .hero-grid { grid-template-columns: 1fr; }
+  .form-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <a href="https://luzconcepcion084.wixstudio.com/my-site-6" class="logo-box">FIA’<b>O</b></a>
+    <nav>
+      <ul>
+        <li><a href="https://luzconcepcion084.wixstudio.com/my-site-6">Home</a></li>
+        <li><a href="https://luzconcepcion084.wixstudio.com/my-site-6/home-1">Credit</a></li>
+        <li><a href="https://luzconcepcion084.wixstudio.com/my-site-6/home-1-2" class="active">Clients</a></li>
+        <li><a href="https://luzconcepcion084.wixstudio.com/my-site-6/home-1-1">Products</a></li>
+        <li><a href="https://luzconcepcion084.wixstudio.com/my-site-6/home-1-2-1">Reports</a></li>
+        <li><a href="https://luzconcepcion084.wixstudio.com/my-site-6/home-1-2-2">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <div class="hero">
+    <div class="container hero-grid">
+      <div>
+        <h1>Your clients</h1>
+        <p>Know who owes you, how much, and since when. All your trusted clients in one place.</p>
+        <a href="#nuevo" class="btn btn-primary">+ Add client</a>
+      </div>
+      <div class="mini-stats">
+        <div class="mini"><strong>48</strong><span>Clientes</span></div>
+        <div class="mini"><strong>B/. 8,430</strong><span>Por cobrar</span></div>
+        <div class="mini"><strong>36</strong><span>Al día</span></div>
+        <div class="mini"><strong>7</strong><span>En mora</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LISTADO -->
+  <section id="lista">
+    <div class="container">
+      <div class="section-title">
+        <h2>Client List</h2>
+        <p>Search by name or filter by status</p>
+      </div>
+
+      <div class="toolbar">
+        <div class="search"><input type="search" id="buscar" placeholder=" Search client..."></div>
+        <div class="filters">
+          <button class="chip active" data-filter="todos">Todos</button>
+          <button class="chip" data-filter="wait">Pendientes</button>
+          <button class="chip" data-filter="late">En mora</button>
+          <button class="chip" data-filter="paid">Al día</button>
+        </div>
+      </div>
+
+      <div class="clients" id="clientes">
+        <article class="client" data-estado="wait" data-nombre="maría gonzález">
+          <div class="client-head"><div class="avatar">MG</div><div><h3>María González</h3><small>📞 6000-1111</small></div></div>
+          <div class="debt"><div><small>Saldo</small><br><strong>B/. 45.00</strong></div><span class="badge wait">Pendiente</span></div>
+          <small>Expires: 20/11/2026</small>
+          <div class="client-actions"><a href="#">Ver detalle</a><a href="#">Abonar</a></div>
+        </article>
+
+        <article class="client paid" data-estado="paid" data-nombre="carlos pérez">
+          <div class="client-head"><div class="avatar">CP</div><div><h3>Carlos Pérez</h3><small>📞 6000-2222</small></div></div>
+          <div class="debt"><div><small>Saldo</small><br><strong>B/. 0.00</strong></div><span class="badge ok">Al día</span></div>
+          <small>Last payment: 10/11/2026</small>
+          <div class="client-actions"><a href="#">Ver detalle</a><a href="#">Nuevo fiado</a></div>
+        </article>
+
+        <article class="client late" data-estado="late" data-nombre="ana rodríguez">
+          <div class="client-head"><div class="avatar">AR</div><div><h3>Ana Rodríguez</h3><small>📞 6000-3333</small></div></div>
+          <div class="debt"><div><small>Saldo</small><br><strong>B/. 60.00</strong></div><span class="badge late">En mora</span></div>
+          <small>Expires: 05/11/2026</small>
+          <div class="client-actions"><a href="#">Ver detalle</a><a href="#">Recordar</a></div>
+        </article>
+
+        <article class="client" data-estado="wait" data-nombre="luis martínez">
+          <div class="client-head"><div class="avatar">LM</div><div><h3>Luis Martínez</h3><small>📞 6000-4444</small></div></div>
+          <div class="debt"><div><small>Saldo</small><br><strong>B/. 38.75</strong></div><span class="badge wait">Pendiente</span></div>
+          <small>Expires: 25/11/2026</small>
+          <div class="client-actions"><a href="#">Ver detalle</a><a href="#">Abonar</a></div>
+        </article>
+
+        <article class="client paid" data-estado="paid" data-nombre="rosa delgado">
+          <div class="client-head"><div class="avatar">RD</div><div><h3>Rosa Delgado</h3><small>📞 6000-5555</small></div></div>
+          <div class="debt"><div><small>Saldo</small><br><strong>B/. 0.00</strong></div><span class="badge ok">Al día</span></div>
+          <small>Last payment: 08/11/2026</small>
+          <div class="client-actions"><a href="#">Ver detalle</a><a href="#">Nuevo fiado</a></div>
+        </article>
+
+        <article class="client late" data-estado="late" data-nombre="josé castillo">
+          <div class="client-head"><div class="avatar">JC</div><div><h3>José Castillo</h3><small>📞 6000-6666</small></div></div>
+          <div class="debt"><div><small>Saldo</small><br><strong>B/. 85.20</strong></div><span class="badge late">En mora</span></div>
+          <small>Expires: 28/10/2026</small>
+          <div class="client-actions"><a href="#">Ver detalle</a><a href="#">Recordar</a></div>
+        </article>
+      </div>
+      <p class="empty" id="vacio">No clients found with that criteria.</p>
+    </div>
+  </section>
+
+  <!-- FORMULARIO -->
+  <section id="nuevo">
+    <div class="container">
+      <div class="section-title">
+        <h2>Add New Client</h2>
+        <p>Register the details of your trusted client</p>
+      </div>
+      <form class="form-box" onsubmit="event.preventDefault(); alert('Client saved successfully ✔'); this.reset();">
+        <div class="form-grid">
+          <div><label for="nombre">Full Name</label><input id="nombre" type="text" placeholder="e.g., María González" required></div>
+          <div><label for="cedula">ID Number</label><input id="cedula" type="text" placeholder="8-000-0000"></div>
+          <div><label for="tel">Phone</label><input id="tel" type="tel" placeholder="6000-0000" required></div>
+          <div><label for="limite">Credit Limit (B/.)</label><input id="limite" type="number" min="0" step="0.01" placeholder="0.00" required></div>
+          <div class="full"><label for="dir">Address</label><input id="dir" type="text" placeholder="Neighborhood, street, house"></div>
+          <div class="full"><label for="notas">Notes</label><textarea id="notas" rows="3" placeholder="e.g., frequent customer, pays on Fridays..."></textarea></div>
+        </div>
+        <button type="submit" class="btn">Save Client</button>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="foot">
+      <div>
+        <span class="logo-box">FIA’<b>O</b></span>
+        <p class="tagline">Your credit notebook, now digital.</p>
+      </div>
+      <ul>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms &amp; Conditions</a></li>
+        <li><a href="#">Accessibility Statement</a></li>
+      </ul>
+    </div>
+    <p class="copy">© 2026 Web Fia’o. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  const buscar = document.getElementById('buscar');
+  const chips = document.querySelectorAll('.chip');
+  const tarjetas = document.querySelectorAll('.client');
+  const vacio = document.getElementById('vacio');
+  let filtro = 'todos';
+
+  function aplicar() {
+    const q = buscar.value.trim().toLowerCase();
+    let visibles = 0;
+    tarjetas.forEach(t => {
+      const okNombre = t.dataset.nombre.includes(q);
+      const okEstado = filtro === 'todos' || t.dataset.estado === filtro;
+      const mostrar = okNombre && okEstado;
+      t.style.display = mostrar ? '' : 'none';
+      if (mostrar) visibles++;
+    });
+    vacio.style.display = visibles ? 'none' : 'block';
+  }
+
+  buscar.addEventListener('input', aplicar);
+  chips.forEach(c => c.addEventListener('click', () => {
+    chips.forEach(x => x.classList.remove('active'));
+    c.classList.add('active');
+    filtro = c.dataset.filter;
+    aplicar();
+  }));
+</script>
+
+</body>
+</html>

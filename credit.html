@@ -1,27 +1,394 @@
 <!DOCTYPE html>
-<html lang="eng"></html>
+<html lang="es">
 <head>
-    <meta charset="8-UTF" name="viewerpoint" content="width= device, initial scale=1">
-    <meta name="new app" content="fiao' website">
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Credit | Web Fia’o</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Gotham → Montserrat | Garet → Figtree | DM Sans → DM Sans -->
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Figtree:wght@400;500;600&family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet">
+<style>
+/* ===========================================================
+   BRANDING FIA’O
+   Colores: #B91C1C · #FFBF32 · #FEF3C7 · #482D1F
+   Título: Gotham · Subtítulo: DM Sans · Cuerpo: Garet
+   =========================================================== */
+:root {
+  --rojo:    #B91C1C;
+  --amarillo:#FFBF32;
+  --crema:   #FEF3C7;
+  --cafe:    #482D1F;
+  --blanco:  #FFFDF7;
+
+  --font-titulo:    'Gotham', 'Montserrat', sans-serif;
+  --font-subtitulo: 'DM Sans', sans-serif;
+  --font-cuerpo:    'Garet', 'Figtree', sans-serif;
+
+  --radius: 16px;
+  --shadow: 0 8px 24px rgba(72,45,31,.16);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-cuerpo); color: var(--cafe); background: var(--blanco); line-height: 1.6; }
+h1, h2 { font-family: var(--font-titulo); font-weight: 800; line-height: 1.12; }
+h3 { font-family: var(--font-subtitulo); font-weight: 700; line-height: 1.25; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; }
+.container { width: min(1120px, 92%); margin: 0 auto; }
+
+/* ---------- Logo ---------- */
+.logo-box { display: inline-block; background: var(--rojo); border-radius: 8px; padding: 6px 16px; font-family: var(--font-titulo); font-weight: 900; font-size: 1.7rem; letter-spacing: 1px; color: var(--blanco); line-height: 1.2; }
+.logo-box b { color: var(--amarillo); font-weight: 900; }
+
+/* ---------- Header (rojo) ---------- */
+header { background: var(--rojo); position: sticky; top: 0; z-index: 50; box-shadow: 0 2px 12px rgba(0,0,0,.25); }
+.nav { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; flex-wrap: wrap; gap: 10px; }
+header .logo-box { background: var(--blanco); color: var(--rojo); }
+header .logo-box b { color: var(--amarillo); text-shadow: 0 0 1px var(--cafe); }
+nav ul { display: flex; list-style: none; gap: 4px; flex-wrap: wrap; }
+nav a { padding: 8px 16px; border-radius: 8px; font-family: var(--font-subtitulo); font-weight: 500; font-size: .95rem; color: var(--blanco); transition: .2s; }
+nav a:hover { background: rgba(255,255,255,.15); }
+nav a.active { background: var(--amarillo); color: var(--cafe); font-weight: 700; }
+
+/* ---------- Hero libreta ---------- */
+.hero { background: var(--crema); padding: 70px 0 90px; }
+.hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+.kicker { display: inline-block; background: var(--amarillo); padding: 4px 14px; border-radius: 6px; font-family: var(--font-subtitulo); font-weight: 700; font-size: .8rem; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 16px; }
+.hero h1 { font-size: clamp(2.2rem, 5vw, 3.5rem); margin-bottom: 18px; }
+.hero h1 span { color: var(--rojo); }
+.hero p { font-size: 1.1rem; max-width: 480px; margin-bottom: 26px; }
+.btn { display: inline-block; padding: 14px 30px; border-radius: 10px; font-family: var(--font-subtitulo); font-weight: 700; border: 2px solid transparent; cursor: pointer; transition: .2s; font-size: 1rem; }
+.btn-red { background: var(--rojo); color: var(--blanco); }
+.btn-red:hover { background: var(--cafe); transform: translateY(-2px); }
+.btn-line { border-color: var(--cafe); color: var(--cafe); margin-left: 8px; }
+.btn-line:hover { background: var(--cafe); color: var(--amarillo); }
+
+.notebook { position: relative; background: var(--blanco); border-radius: 6px 16px 16px 6px; padding: 30px 28px 30px 64px; box-shadow: var(--shadow); transform: rotate(2deg);
+  background-image: repeating-linear-gradient(transparent 0, transparent 35px, #ecd9a0 35px, #ecd9a0 36px); }
+.notebook::before { content: ""; position: absolute; left: 44px; top: 0; bottom: 0; width: 2px; background: var(--rojo); opacity: .6; }
+.notebook::after { content: ""; position: absolute; left: 14px; top: 28px; bottom: 28px; width: 14px;
+  background: radial-gradient(circle, var(--cafe) 5px, transparent 6px) 0 0 / 14px 56px repeat-y; opacity: .7; }
+.notebook h3 { color: var(--rojo); font-size: 1.2rem; line-height: 36px; }
+.notebook .row { display: flex; justify-content: space-between; line-height: 36px; font-size: .98rem; }
+.notebook .row.tot { font-family: var(--font-titulo); font-weight: 800; color: var(--rojo); font-size: 1.15rem; }
+.notebook .pagado { text-decoration: line-through; opacity: .55; }
+.stamp { position: absolute; right: 18px; bottom: 16px; border: 3px solid var(--rojo); color: var(--rojo); font-family: var(--font-titulo); font-weight: 900; padding: 2px 12px; border-radius: 6px; transform: rotate(-12deg); letter-spacing: 2px; opacity: .8; }
+
+/* ---------- Secciones ---------- */
+section { padding: 80px 0; }
+.title { margin-bottom: 40px; max-width: 640px; }
+.title h2 { font-size: clamp(1.8rem, 3.5vw, 2.5rem); color: var(--cafe); }
+.title h2 em { font-style: normal; color: var(--rojo); }
+.title p { margin-top: 10px; font-family: var(--font-subtitulo); opacity: .85; }
+
+/* ---------- Simulador ---------- */
+.sim { background: var(--cafe); color: var(--crema); }
+.sim .title h2 { color: var(--amarillo); }
+.sim-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 30px; }
+.panel { background: var(--blanco); color: var(--cafe); border-radius: var(--radius); padding: 30px; }
+.field { margin-bottom: 24px; }
+.field label { display: flex; justify-content: space-between; font-family: var(--font-subtitulo); font-weight: 700; margin-bottom: 10px; }
+.field label span { color: var(--rojo); font-family: var(--font-titulo); font-weight: 800; }
+input[type=range] { width: 100%; accent-color: var(--rojo); height: 6px; }
+.opts { display: flex; gap: 8px; flex-wrap: wrap; }
+.opt { flex: 1; min-width: 70px; padding: 10px; border: 2px solid var(--cafe); background: transparent; color: var(--cafe); border-radius: 10px; font-family: var(--font-subtitulo); font-weight: 700; cursor: pointer; transition: .2s; }
+.opt:hover { background: var(--crema); }
+.opt.on { background: var(--rojo); border-color: var(--rojo); color: var(--blanco); }
+
+.result { display: flex; flex-direction: column; }
+.big { background: var(--amarillo); border-radius: 12px; padding: 22px; text-align: center; margin-bottom: 18px; }
+.big small { font-family: var(--font-subtitulo); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; font-size: .75rem; }
+.big strong { display: block; font-family: var(--font-titulo); font-weight: 900; font-size: 2.8rem; color: var(--rojo); line-height: 1.1; }
+.summary { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 18px; }
+.summary div { background: var(--crema); border-radius: 10px; padding: 12px 14px; font-size: .85rem; }
+.summary strong { display: block; font-family: var(--font-titulo); font-weight: 800; font-size: 1.1rem; }
+.cal { list-style: none; display: grid; gap: 8px; max-height: 210px; overflow-y: auto; }
+.cal li { display: flex; justify-content: space-between; padding: 10px 14px; background: var(--blanco); border: 1px dashed #d9c27a; border-radius: 10px; font-size: .92rem; }
+.cal li b { color: var(--rojo); }
+.note { margin-top: 12px; font-size: .78rem; opacity: .7; }
+
+/* ---------- Niveles ---------- */
+.levels { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.level { background: var(--crema); border-radius: var(--radius); padding: 30px 26px; position: relative; border: 3px solid transparent; transition: .2s; }
+.level:hover { border-color: var(--rojo); transform: translateY(-4px); }
+.level.top { background: var(--amarillo); }
+.level .num { font-family: var(--font-titulo); font-weight: 900; font-size: 3rem; color: var(--rojo); opacity: .25; position: absolute; right: 20px; top: 10px; }
+.level h3 { font-size: 1.3rem; margin-bottom: 4px; }
+.level .lim { font-family: var(--font-titulo); font-weight: 800; font-size: 1.8rem; color: var(--rojo); margin: 8px 0 14px; }
+.level ul { list-style: none; display: grid; gap: 6px; font-size: .93rem; }
+.level li::before { content: "✓ "; color: var(--rojo); font-weight: 800; }
+
+/* ---------- Línea de tiempo ---------- */
+.steps { background: var(--crema); }
+.timeline { position: relative; max-width: 760px; margin: 0 auto; padding-left: 40px; }
+.timeline::before { content: ""; position: absolute; left: 15px; top: 6px; bottom: 6px; width: 4px; background: var(--rojo); border-radius: 4px; }
+.step { position: relative; background: var(--blanco); border-radius: var(--radius); padding: 22px 26px; margin-bottom: 20px; box-shadow: var(--shadow); }
+.step::before { content: attr(data-n); position: absolute; left: -41px; top: 18px; width: 34px; height: 34px; background: var(--amarillo); border: 3px solid var(--rojo); border-radius: 50%; display: grid; place-items: center; font-family: var(--font-titulo); font-weight: 800; font-size: .9rem; }
+.step h3 { color: var(--rojo); margin-bottom: 4px; }
+
+/* ---------- FAQ ---------- */
+.faq { max-width: 820px; margin: 0 auto; display: grid; gap: 12px; }
+details { background: var(--crema); border-radius: 12px; padding: 0 22px; }
+summary { cursor: pointer; padding: 18px 0; font-family: var(--font-subtitulo); font-weight: 700; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "+"; font-size: 1.5rem; color: var(--rojo); font-weight: 800; transition: .2s; }
+details[open] summary::after { transform: rotate(45deg); }
+details p { padding-bottom: 18px; }
+details[open] { box-shadow: inset 4px 0 0 var(--rojo); }
+
+/* ---------- CTA ---------- */
+.cta { background: var(--rojo); color: var(--blanco); text-align: center; padding: 70px 0; }
+.cta h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
+.cta h2 b { color: var(--amarillo); }
+.cta p { margin: 12px 0 26px; font-family: var(--font-subtitulo); font-size: 1.1rem; }
+.cta .btn { background: var(--amarillo); color: var(--cafe); }
+.cta .btn:hover { background: var(--blanco); }
+
+/* ---------- Footer ---------- */
+footer { background: var(--cafe); color: var(--crema); padding: 40px 0 24px; }
+.foot { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+.tagline { font-family: var(--font-subtitulo); font-size: .95rem; margin-top: 8px; color: var(--amarillo); }
+footer ul { list-style: none; display: flex; gap: 18px; flex-wrap: wrap; font-family: var(--font-subtitulo); }
+footer a:hover { color: var(--amarillo); }
+.copy { text-align: center; margin-top: 24px; font-size: .85rem; opacity: .7; }
+
+@media (max-width: 860px) {
+  .hero-grid, .sim-grid { grid-template-columns: 1fr; }
+  .levels { grid-template-columns: 1fr; }
+  .notebook { transform: none; }
+  .btn-line { margin: 10px 0 0 0; }
+}
+</style>
 </head>
+<body>
+
 <header>
-           <div class="top">
-           <nav>
-            <div class="logo">FIA<span class="accent">´</span><span class="ring"></span></div>
-    <ul class="menu">
-      <li><a href="#">Home</a></li>
-        <li><a href="credit.html">Credit</a></li>
-        <li><a href="#">Products</a></li>
-        <li><a href="#">Clients</a></li>
-        <li><a href="#">Reports</a></li>
-        <li><a href="#">Contact</a></li>
+  <div class="container nav">
+    <a href="https://luzconcepcion084.wixstudio.com/my-site-6" class="logo-box">FIA’<b>O</b></a>
+    <nav>
+      <ul>
+        <li><a href="https://luzconcepcion084.wixstudio.com/my-site-6">Home</a></li>
+        <li><a href="https://luzconcepcion084.wixstudio.com/my-site-6/home-1" class="active">Credit</a></li>
+        <li><a href="https://luzconcepcion084.wixstudio.com/my-site-6/home-1-2">Clients</a></li>
+        <li><a href="https://luzconcepcion084.wixstudio.com/my-site-6/home-1-1">Products</a></li>
+        <li><a href="https://luzconcepcion084.wixstudio.com/my-site-6/home-1-2-1">Reports</a></li>
+        <li><a href="https://luzconcepcion084.wixstudio.com/my-site-6/home-1-2-2">Contact</a></li>
       </ul>
     </nav>
   </div>
-<section>
-    <h1>
-        know your credit
-    </h1>
-</section>
 </header>
+
+<main>
+  <!-- HERO LIBRETA -->
+  <div class="hero">
+    <div class="container hero-grid">
+      <div>
+        <span class="kicker">trusted credit</span>
+        <h1>The always trusted credit, but <span>without losing track</span></h1>
+        <p>Before you would write it down in a notebook. Now every credit, payment, and date is saved and clear for you and your client.</p>
+        <a href="#simulador" class="btn btn-red">Simulate a credit</a>
+        <a href="#niveles" class="btn btn-line">View levels</a>
+      </div>
+      <div class="notebook" aria-hidden="true">
+        <h3>Cuenta de María G.</h3>
+        <div class="row"><span>Rice </span><span>B/. 3.25</span></div>
+        <div class="row"><span>Oil 1 liter</span><span>B/. 2.80</span></div>
+        <div class="row pagado"><span>Soda 2 L</span><span>B/. 2.15</span></div>
+        <div class="row"><span>Detergent</span><span>B/. 3.90</span></div>
+        <div class="row tot"><span>Balance</span><span>B/. 9.95</span></div>
+        <span class="stamp">All DAY</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SIMULADOR -->
+  <section class="sim" id="simulador">
+    <div class="container">
+      <div class="title">
+        <h2>Simulate your credit</h2>
+        <p>See how much your client would pay in each installment and on which dates.</p>
+      </div>
+      <div class="sim-grid">
+        <div class="panel">
+          <div class="field">
+            <label for="monto">Credit Amount <span id="vMonto">B/. 100</span></label>
+            <input type="range" id="monto" min="10" max="500" step="5" value="100">
+          </div>
+          <div class="field">
+            <label>NNumber of Installments <span id="vCuotas">4</span></label>
+            <div class="opts" id="cuotas">
+              <button class="opt" data-v="1">1</button>
+              <button class="opt" data-v="2">2</button>
+              <button class="opt on" data-v="4">4</button>
+              <button class="opt" data-v="6">6</button>
+              <button class="opt" data-v="8">8</button>
+            </div>
+          </div>
+          <div class="field">
+            <label>Payment Frequency</label>
+            <div class="opts" id="freq">
+              <button class="opt" data-v="7">Weekly</button>
+              <button class="opt on" data-v="15">Bi-weekly</button>
+              <button class="opt" data-v="30">Monthly</button>
+            </div>
+          </div>
+          <div class="field" style="margin-bottom:0">
+            <label for="interes">Recargo (opcional) <span id="vInteres">0%</span></label>
+            <input type="range" id="interes" min="0" max="10" step="1" value="0">
+          </div>
+        </div>
+
+        <div class="panel result">
+          <div class="big">
+            <small>partial payment</small>
+            <strong id="cuotaVal">B/. 25.00</strong>
+          </div>
+          <div class="summary">
+            <div>Total to pay<strong id="totalVal">B/. 100.00</strong></div>
+            <div>Final payment<strong id="finVal">—</strong></div>
+          </div>
+          <ul class="cal" id="calendario"></ul>
+          <p class="note">* Example simulation. The amounts and final dates are defined by each store.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NIVELES -->
+  <section id="niveles">
+    <div class="container">
+      <div class="title">
+        <h2>Each client grows in <em>trust</em></h2>
+        <p>The more punctual they pay, the higher their credit limit.</p>
+      </div>
+      <div class="levels">
+        <article class="level">
+          <span class="num">1</span>
+          <h3>Nuevo</h3>
+          <div class="lim">B/. 50</div>
+          <ul><li>First credit test</li><li>term up to 15 days</li><li>weekly follow-up</li></ul>
+        </article>
+        <article class="level">
+          <span class="num">2</span>
+          <h3>De confianza</h3>
+          <div class="lim">B/. 150</div>
+          <ul><li>3 payments on time</li><li>term up to 30 days</li><li>automatic reminders</li></ul>
+        </article>
+        <article class="level top">
+          <span class="num">3</span>
+          <h3>Confia’o</h3>
+          <div class="lim">B/. 300</div>
+          <ul><li>Impeccable history</li><li>Flexible terms</li><li>Priority in new products</li></ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- LÍNEA DE TIEMPO -->
+  <section class="steps">
+    <div class="container">
+      <div class="title" style="margin-left:auto;margin-right:auto;text-align:center">
+        <h2>How a Fiado Works</h2>
+        <p>From the purchase to the final payment, everything in order.</p>
+      </div>
+      <div class="timeline">
+        <div class="step" data-n="1"><h3>The client brings their products</h3><p>You select the products and add them to their account.</p></div>
+        <div class="step" data-n="2"><h3>They agree on installments and dates</h3><p>You define how many payments will be and how often they will be paid.</p></div>
+        <div class="step" data-n="3"><h3>Reminder before each payment</h3><p>The system notifies you so you can collect on time without causing inconvenience.</p></div>
+        <div class="step" data-n="4"><h3>You register the payment</h3><p>Each payment reduces the balance and is saved in their history.</p></div>
+        <div class="step" data-n="5"><h3>Account settled, higher limit</h3><p>When completed on time, the client moves up to a higher level of trust.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section>
+    <div class="container">
+      <div class="title" style="margin-left:auto;margin-right:auto;text-align:center">
+        <h2>Frequently Asked Questions</h2>
+      </div>
+      <div class="faq">
+        <details><summary>Do I have to charge interest?</summary><p>It's not mandatory. The surcharge is optional and you decide for each fiado; you can leave it at 0%.</p></details>
+        <details><summary>What happens if a client is late?</summary><p>Their account appears marked as "In default" and you can send them a reminder. As long as they are not up to date, they don't advance in level.</p></details>
+        <details><summary>Can I change a client's limit?</summary><p>Yes. The levels are a guide and you decide the limit you give to each person.</p></details>
+        <details><summary>Do clients see their account?</summary><p>They can check their balance, installments, and payment dates to avoid confusion.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta">
+    <div class="container">
+      <h2>Your credit notebook, <b>now digital</b></h2>
+      <p>Start managing your credits today.</p>
+      <a href="https://luzconcepcion084.wixstudio.com/my-site-6/home-1-2-2" class="btn">Contact Us</a>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="foot">
+      <div>
+        <span class="logo-box">FIA’<b>O</b></span>
+        <p class="tagline">Your credit notebook, now digital.</p>
+      </div>
+      <ul>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms &amp; Conditions</a></li>
+        <li><a href="#">Accessibility Statement</a></li>
+      </ul>
+    </div>
+    <p class="copy">© 2026 Web Fia’o. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  const $ = id => document.getElementById(id);
+  let cuotas = 4, freq = 15;
+  const dinero = n => 'B/. ' + n.toFixed(2);
+  const fecha = d => d.toLocaleDateString('es-PA', { day: '2-digit', month: 'short', year: 'numeric' });
+
+  function calcular() {
+    const monto = +$('monto').value;
+    const interes = +$('interes').value;
+    const total = monto * (1 + interes / 100);
+    const cuota = total / cuotas;
+
+    $('vMonto').textContent = 'B/. ' + monto;
+    $('vInteres').textContent = interes + '%';
+    $('vCuotas').textContent = cuotas;
+    $('cuotaVal').textContent = dinero(cuota);
+    $('totalVal').textContent = dinero(total);
+
+    let html = '';
+    let ultima;
+    for (let i = 1; i <= cuotas; i++) {
+      const d = new Date();
+      d.setDate(d.getDate() + freq * i);
+      ultima = d;
+      html += `<li><span>Cuota ${i} · ${fecha(d)}</span><b>${dinero(cuota)}</b></li>`;
+    }
+    $('calendario').innerHTML = html;
+    $('finVal').textContent = fecha(ultima);
+  }
+
+  function grupo(id, cb) {
+    document.querySelectorAll('#' + id + ' .opt').forEach(b => b.addEventListener('click', () => {
+      document.querySelectorAll('#' + id + ' .opt').forEach(x => x.classList.remove('on'));
+      b.classList.add('on');
+      cb(+b.dataset.v);
+      calcular();
+    }));
+  }
+  grupo('cuotas', v => cuotas = v);
+  grupo('freq', v => freq = v);
+  $('monto').addEventListener('input', calcular);
+  $('interes').addEventListener('input', calcular);
+  calcular();
+</script>
+
+</body>
+</html>
